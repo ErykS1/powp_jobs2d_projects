@@ -1,11 +1,9 @@
 package edu.kis.powp.jobs2d.command;
 
+import edu.kis.powp.jobs2d.command.builder.CompoundCommandBuilder;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class JsonCommandImporter implements CommandImporter {
 
@@ -17,15 +15,15 @@ public class JsonCommandImporter implements CommandImporter {
         String name = jsonObject.getString("name");
         JSONArray commandsArray = jsonObject.getJSONArray("commands");
 
-        List<DriverCommand> commandsList = new ArrayList<>();
+        CompoundCommandBuilder builder = new CompoundCommandBuilder().setName(name);
+
         for (int i = 0; i < commandsArray.length(); i++) {
             JSONObject commandObject = commandsArray.getJSONObject(i);
             DriverCommand command = createCommandFromJson(commandObject);
-            commandsList.add(command);
+            builder.addCommand(command);
         }
 
-        return new CompoundCommand(commandsList, name);
-
+        return builder.build();
     }
 
     private DriverCommand createCommandFromJson(JSONObject jsonObject) throws JSONException, IllegalArgumentException {

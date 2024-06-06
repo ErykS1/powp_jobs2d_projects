@@ -1,7 +1,7 @@
 package edu.kis.powp.jobs2d.command.builder;
 
-import edu.kis.powp.jobs2d.command.CompoundCommand;
 import edu.kis.powp.jobs2d.command.DriverCommand;
+import edu.kis.powp.jobs2d.command.ImmutableCompoundCommand;
 import edu.kis.powp.jobs2d.command.OperateToCommand;
 import edu.kis.powp.jobs2d.command.SetPositionCommand;
 import edu.kis.powp.jobs2d.commons.Builder;
@@ -9,10 +9,9 @@ import edu.kis.powp.jobs2d.commons.Builder;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CompoundCommandBuilder implements Builder<CompoundCommand> {
+public class CompoundCommandBuilder implements Builder<ImmutableCompoundCommand> {
 
     private final List<DriverCommand> commands = new ArrayList<>();
-
     private String name = "";
 
     public CompoundCommandBuilder setName(String name) {
@@ -36,7 +35,7 @@ public class CompoundCommandBuilder implements Builder<CompoundCommand> {
     }
 
     @Override
-    public CompoundCommand build() {
-        return new CompoundCommand(commands, name);
+    public ImmutableCompoundCommand build() {
+        return new ImmutableCompoundCommand(commands, name);
     }
 }

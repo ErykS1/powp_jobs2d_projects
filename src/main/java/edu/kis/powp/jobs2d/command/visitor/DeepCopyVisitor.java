@@ -36,8 +36,6 @@ public class DeepCopyVisitor implements CommandVisitor {
             command.accept(this);
             commands.add(this.getCopiedCommand());
         }
-        copiedCommand = new CompoundCommand(commands, "Copy of " + compoundCommand);
-
+        copiedCommand = new ImmutableCompoundCommand(commands, "Copy of " + compoundCommand.toString());
     }
-
 }

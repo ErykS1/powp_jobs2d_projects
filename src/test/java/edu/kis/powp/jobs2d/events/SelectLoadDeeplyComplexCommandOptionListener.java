@@ -1,6 +1,7 @@
 package edu.kis.powp.jobs2d.events;
 
 import edu.kis.powp.jobs2d.command.CompoundCommand;
+import edu.kis.powp.jobs2d.command.ImmutableCompoundCommand;
 import edu.kis.powp.jobs2d.command.builder.CompoundCommandBuilder;
 import edu.kis.powp.jobs2d.command.factory.CompoundCommandRectangleFactory;
 import edu.kis.powp.jobs2d.command.manager.CommandManager;
@@ -13,14 +14,14 @@ import java.awt.event.ActionListener;
 public class SelectLoadDeeplyComplexCommandOptionListener implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
-        CompoundCommand compoundCommand1 = CompoundCommandRectangleFactory.getRectangleAction("Rectangle command");
+        ImmutableCompoundCommand compoundCommand1 = CompoundCommandRectangleFactory.getRectangleAction("Rectangle command");
         CompoundCommandBuilder builder = new CompoundCommandBuilder();
         builder.setName("Triangle command")
                 .addSetPosition(0, 100)
                 .addOperateTo(200, 50)
                 .addOperateTo(0, 0)
                 .addOperateTo(0, 100);
-        CompoundCommand compoundCommand2 = builder.build();
+        ImmutableCompoundCommand compoundCommand2 = builder.build();
         CompoundCommand deeplyCompoundCommand = new CompoundCommand("Deeply complex command");
         deeplyCompoundCommand.addCommand(compoundCommand1);
         deeplyCompoundCommand.addCommand(compoundCommand2);

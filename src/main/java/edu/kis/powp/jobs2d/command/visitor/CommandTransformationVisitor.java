@@ -1,33 +1,34 @@
 package edu.kis.powp.jobs2d.command.visitor;
 
 import edu.kis.powp.jobs2d.command.*;
+import edu.kis.powp.jobs2d.command.builder.CompoundCommandBuilder;
 import edu.kis.powp.jobs2d.transformations.Transformation;
 
 import java.awt.Point;
 
 public class CommandTransformationVisitor implements CommandVisitor {
 
-    private final CompoundCommand transformedCommands;
+    private final CompoundCommandBuilder transformedCommandsBuilder;
     private final Transformation transformation;
 
-    public CompoundCommand getTransformedCommand() {
-        return transformedCommands;
+    public ImmutableCompoundCommand getTransformedCommand() {
+        return transformedCommandsBuilder.build();
     }
 
     public CommandTransformationVisitor(String commandName, Transformation transformation) {
         String newName = commandName + "_" + transformation.getName();
-        this.transformedCommands = new CompoundCommand(newName);
+        this.transformedCommandsBuilder = new CompoundCommandBuilder().setName(newName);
         this.transformation = transformation;
     }
 
     @Override
-    public void visit(OperateToCommand operateToCommand){
+    public void visit(OperateToCommand operateToCommand) {
         Point point = new Point(operateToCommand.getX(), operateToCommand.getY());
         applyTransformation(point, OperateToCommand::new);
     }
 
     @Override
-    public void visit(SetPositionCommand setPositionCommand){
+    public void visit(SetPositionCommand setPositionCommand) {
         Point point = new Point(setPositionCommand.getX(), setPositionCommand.getY());
         applyTransformation(point, SetPositionCommand::new);
     }
@@ -43,12 +44,12 @@ public class CommandTransformationVisitor implements CommandVisitor {
     }
 
     private void add(DriverCommand command) {
-        transformedCommands.addCommand(command);
+        transformedCommandsBuilder.addCommand(command);
     }
 
     @Override
     public String toString() {
-        return transformedCommands.toString();
+        return transformedCommandsBuilder.toString();
     }
 
     /**
