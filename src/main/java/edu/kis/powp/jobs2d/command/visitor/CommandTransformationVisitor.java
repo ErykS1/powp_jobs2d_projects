@@ -4,7 +4,7 @@ import edu.kis.powp.jobs2d.command.*;
 import edu.kis.powp.jobs2d.command.builder.CompoundCommandBuilder;
 import edu.kis.powp.jobs2d.transformations.Transformation;
 
-import java.awt.Point;
+import java.awt.*;
 
 public class CommandTransformationVisitor implements CommandVisitor {
 

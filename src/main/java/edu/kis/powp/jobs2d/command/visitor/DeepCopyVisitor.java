@@ -1,10 +1,6 @@
 package edu.kis.powp.jobs2d.command.visitor;
 
-import edu.kis.powp.jobs2d.command.DriverCommand;
-import edu.kis.powp.jobs2d.command.ICompoundCommand;
-import edu.kis.powp.jobs2d.command.OperateToCommand;
-import edu.kis.powp.jobs2d.command.SetPositionCommand;
-import edu.kis.powp.jobs2d.command.CompoundCommand;
+import edu.kis.powp.jobs2d.command.*;
 
 import java.util.ArrayList;
 import java.util.Iterator;

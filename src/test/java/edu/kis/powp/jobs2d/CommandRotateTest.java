@@ -1,10 +1,10 @@
 package edu.kis.powp.jobs2d;
 
-import edu.kis.powp.jobs2d.command.manager.ICommandManager;
-import edu.kis.powp.jobs2d.transformations.RotateTransformation;
 import edu.kis.powp.jobs2d.command.DriverCommand;
+import edu.kis.powp.jobs2d.command.manager.ICommandManager;
 import edu.kis.powp.jobs2d.command.visitor.CommandTransformationVisitor;
 import edu.kis.powp.jobs2d.features.CommandsFeature;
+import edu.kis.powp.jobs2d.transformations.RotateTransformation;
 import edu.kis.powp.jobs2d.transformations.Transformation;
 
 import java.awt.event.ActionEvent;
@@ -13,6 +13,7 @@ import java.awt.event.ActionListener;
 public class CommandRotateTest implements ActionListener {
 
     private final double degrees;
+
     public CommandRotateTest(double degrees) {
         this.degrees = degrees;
     }

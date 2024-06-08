@@ -1,11 +1,11 @@
 package edu.kis.powp.jobs2d;
 
 import edu.kis.powp.jobs2d.command.DriverCommand;
-import edu.kis.powp.jobs2d.command.visitor.CommandTransformationVisitor;
 import edu.kis.powp.jobs2d.command.manager.ICommandManager;
+import edu.kis.powp.jobs2d.command.visitor.CommandTransformationVisitor;
+import edu.kis.powp.jobs2d.features.CommandsFeature;
 import edu.kis.powp.jobs2d.transformations.Transformation;
 import edu.kis.powp.jobs2d.transformations.VerticalFlipTransformation;
-import edu.kis.powp.jobs2d.features.CommandsFeature;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
